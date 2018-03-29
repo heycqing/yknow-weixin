@@ -1,0 +1,29 @@
+{
+  "name": "yknow-weixin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "none",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heycqing/yknow-weixin.git"
+  },
+  "keywords": [
+    "yk"
+  ],
+  "author": "cqing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heycqing/yknow-weixin/issues"
+  },
+  "homepage": "https://github.com/heycqing/yknow-weixin#readme"
+}
