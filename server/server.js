@@ -12,11 +12,21 @@ var app = express();
     app.use(bodyParser.json());
     // 设置头文件
     app.all('*', function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        next();
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+        res.header("Content-Type", "application/json;charset=utf-8");
+        if (req.method == 'OPTIONS') {
+            res.send(200);
+            //  /让options请求快速返回/
+        }
+        else {
+            next();
+        }
     });
 
     app.post('/saveData',function(req, res){
+       
  
     // 对象转换为字符串
     var str_json = JSON.stringify(req.body)
@@ -35,18 +45,21 @@ var app = express();
     }); 
 
     connection.connect();
-    var modSql = 'insert  INTO  dataOfYK (id,sex,name,age,phone) value(0,?,?,?,?)';
+    var modSql = 'INSERT INTO  dataOfYK (id,sex,name,age,phone) value(0,?,?,?,?) ';
     var modSqlParams = [str_sex,str_name,str_age,str_phone]
   
     //改
     connection.query(modSql,modSqlParams,function (err, result) {
-    if(err){
-            console.log('[UPDATE ERROR] - ',err.message);
+        if(err){
+                console.log('[UPDATE ERROR] - ',err.message);
+                return;
+        }
+        if(result === 0){
             return;
-    }        
-    console.log('--------------------------insert----------------------------');
-    console.log('UPDATE affectedRows',result);
-    console.log('-----------------------------------------------------------------\n\n');
+        }        
+        console.log('--------------------------insert----------------------------');
+        console.log('UPDATE affectedRows',result);
+        console.log('-----------------------------------------------------------------\n\n');
     });
 
     connection.end();
