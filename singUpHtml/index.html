@@ -115,7 +115,7 @@
             console.log('json_'+json_.age);
            
             // console.log("数据: \n" + data + "\n状态: " + status);
-            if(phone!=''&&name!=''&&age!=''&&sex!=''){
+            if(phone!=''&&name!=''&&age!=''&&sex!=''&&phone.length===11){
                 $.ajax({
                     type: "post",
                     contentType: "application/json",
