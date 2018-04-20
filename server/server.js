@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var mysql = require('mysql')
+var msgPost = require('./msgPost')
  
 var app = express();
  
@@ -12,11 +13,12 @@ var app = express();
     app.use(bodyParser.json());
     // 设置头文件
     app.all('*', function(req, res, next) {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-        res.header("Content-Type", "application/json;charset=utf-8");
-        if (req.method == 'OPTIONS') {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+        // res.set('')
+        res.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+        res.set("Content-Type", "text/plain;charset=utf-8");
+        if (req.method == 'post') {
             res.send(200);
             //  /让options请求快速返回/
         }
@@ -34,6 +36,7 @@ var app = express();
     var str_sex = req.body.sex; 
     var str_age = req.body.age;
     var str_phone = req.body.phone;
+    console.log('phone:'+str_phone)
     
     // console.log('str:'+str_json)
     var connection = mysql.createConnection({     
@@ -59,6 +62,7 @@ var app = express();
         }        
         console.log('--------------------------insert----------------------------');
         console.log('UPDATE affectedRows',result);
+        // msgPost.sendMsg(str_phone);
         console.log('-----------------------------------------------------------------\n\n');
     });
 

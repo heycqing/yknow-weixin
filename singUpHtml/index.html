@@ -104,10 +104,10 @@
             console.log('sex'+sex)
             // json
             var json_ = {
-                name:name,
-                age:age,
-                phone:phone,
-                sex:sex
+                'name':name,
+                'age':age,
+                'phone':phone,
+                'sex':sex
             }
             json_ = JSON.stringify(json_);
             
@@ -132,10 +132,10 @@
                 dataType: "json",
                 data:json_,
                 success: function (result) {
-                alert("操作成功");
+                console.log("操作成功");
                 },
                 error:function(response){
-                alert("error");
+                console.log("error");
                 }
             });
             // console.log("数据: \n" + data + "\n状态: " + status);
