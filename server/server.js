@@ -20,7 +20,6 @@ var app = express();
         res.set("Content-Type", "text/plain;charset=utf-8");
         if (req.method == 'post') {
             res.send(200);
-            //  /让options请求快速返回/
         }
         else {
             next();
@@ -62,7 +61,7 @@ var app = express();
         }        
         console.log('--------------------------insert----------------------------');
         console.log('UPDATE affectedRows',result);
-        // msgPost.sendMsg(str_phone);
+        msgPost.sendMsg(str_phone);
         console.log('-----------------------------------------------------------------\n\n');
     });
 
@@ -75,4 +74,4 @@ var app = express();
  
 });
  
-app.listen(3333);
+app.listen(3553);

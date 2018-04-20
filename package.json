@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "md5": "^2.2.1",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "babel-runtime":"^6.26.0"
   },
   "scripts": {
     "test": "none"
