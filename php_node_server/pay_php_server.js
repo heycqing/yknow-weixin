@@ -46,7 +46,7 @@ var app = express();
 
         connection.end();
     
-        fs.writeFile('check.json',str_json, 'utf8', function(){
+        fs.writeFile('check.json',str_openId, 'utf8', function(){
         // 保存完成后的回调函数
     
         console.log("保存完成");
